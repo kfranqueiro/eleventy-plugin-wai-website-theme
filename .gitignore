@@ -1,0 +1,5 @@
+node_modules/
+_site/
+
+# Docs build without package-lock to ensure they use the latest version of the plugin
+package-lock.json

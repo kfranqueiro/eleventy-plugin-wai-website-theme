@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "eleventy --quiet",
+    "build:pages": "eleventy --pathprefix=eleventy-plugin-wai-website-theme",
+    "start": "npm run build -- --serve --incremental"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "eleventy-plugin-wai-website-theme": "github:kfranqueiro/eleventy-plugin-wai-website-theme"
+  },
+  "overrides": {
+    "wai-website-theme": {
+      "gulp-pixrem": "npm:dry-uninstall",
+      "postcss": "npm:dry-uninstall",
+      "postcss-easy-import": "npm:dry-uninstall",
+      "postcss-import": "npm:dry-uninstall"
+    }
+  }
+}
