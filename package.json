@@ -1,0 +1,35 @@
+{
+  "name": "eleventy-plugin-wai-website-theme",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Plugin for using W3C's wai-website-theme (designed for Jekyll) with Eleventy",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/8d347eb0afdc4d0c5a8f67e3312713b6.git"
+  },
+  "author": "Kenneth G. Franqueiro",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "@mdit/plugin-attrs": "^0.13.1",
+    "@mdit/plugin-dl": "^0.13.1",
+    "fast-glob": "^3.3.2",
+    "markdown-it-footnote": "^4.0.0",
+    "mkdirp": "^3.0.1",
+    "wai-website-theme": "github:w3c/wai-website-theme"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.14"
+  },
+  "peerDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "overrides": {
+    "wai-website-theme": {
+      "gulp-pixrem": "npm:dry-uninstall",
+      "postcss": "npm:dry-uninstall",
+      "postcss-easy-import": "npm:dry-uninstall",
+      "postcss-import": "npm:dry-uninstall"
+    }
+  }
+}
