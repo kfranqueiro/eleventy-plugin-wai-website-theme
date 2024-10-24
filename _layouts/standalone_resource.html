@@ -1,77 +1,77 @@
 {%- assign pagelang = 'en' -%}
-{%- if page.lang -%}
-  {%- assign pagelang = page.lang -%}
+{%- if lang -%}
+  {%- assign pagelang = lang -%}
 {%- endif -%}
 {%- if pagelang == 'en' -%}
   {%- assign enpage = page -%}
 {%- else -%}
-  {%- assign enpage=site.documents | where:"ref", page.ref | where: "lang", "en" | first -%}
+  {%- assign enpage=site.documents | where:"ref", ref | where: "lang", "en" | first -%}
   {%- unless enpage.ref -%}
-    {%- assign enpage=site.pages | where:"ref", page.ref | where: "lang", "en" | first -%}
+    {%- assign enpage=site.pages | where:"ref", ref | where: "lang", "en" | first -%}
   {%- endunless -%}
 {%- endif -%}
 {%- assign englishpageurl = enpage.url %}
-{%- assign translations=site.documents | where:"ref", page.ref | where_exp:"item", "item.lang != 'en'" | sort: 'lang' %}
+{%- assign translations=site.documents | where:"ref", ref | where_exp:"item", "item.lang != 'en'" | sort: 'lang' %}
 {%- unless translations[0].ref -%}
-  {% assign translations=site.pages | where:"ref", page.ref | where_exp:"item", "item.lang != 'en'" | sort: 'lang' %}
+  {% assign translations=site.pages | where:"ref", ref | where_exp:"item", "item.lang != 'en'" | sort: 'lang' %}
 {%- endunless -%}
 <!DOCTYPE html>
-<html class="no-js" lang="{% if page.lang %}{{page.lang}}{% else %}en{% endif %}" dir="{% if site.data.lang[pagelang].rtl %}rtl{% else %}ltr{% endif %}" prefix="og: http://ogp.me/ns#">
+<html class="no-js" lang="{% if lang %}{{lang}}{% else %}en{% endif %}" dir="{% if site.data.lang[pagelang].rtl %}rtl{% else %}ltr{% endif %}" prefix="og: http://ogp.me/ns#">
   {%- assign timestamp = site.time | date: '%s%N' -%}
   {%- assign timestamp = '?' | append: timestamp -%}
   {%- include head.html type="start" timestamp=timestamp -%}
   {%- if site.data.lang[pagelang].rtl -%}
-  <title> W3C | WAI | {%if page.type_of_guidance %}{{page.type_of_guidance}} | {% endif%}{%if page.proposed %}[proposed]{% endif %}{{page.title}}</title>
+  <title> W3C | WAI | {%if type_of_guidance %}{{type_of_guidance}} | {% endif%}{%if proposed %}[proposed]{% endif %}{{title}}</title>
   {%- else -%}
-  <title> {{page.title}}{%if page.proposed %}[proposed]{% endif %} | {%if page.type_of_guidance %}{{page.type_of_guidance}} | {% endif%}WAI | W3C</title>
+  <title> {{title}}{%if proposed %}[proposed]{% endif %} | {%if type_of_guidance %}{{type_of_guidance}} | {% endif%}WAI | W3C</title>
   {%- endif -%}
-  {%- if page.external_css %}<link rel="stylesheet" href="{{ page.external_css | url | append: timestamp }}">{% endif -%}
-  {%- if page.ext_css %}<link rel="stylesheet" href="{{ page.ext_css | prepend: '/css/' | prepend: page.collection | prepend: '/' | url | append: timestamp }}">{% endif -%}
-  {%- if page.inline_css %}<style>{{ page.inline_css }}</style>{% endif -%}
+  {%- if external_css %}<link rel="stylesheet" href="{{ external_css | url | append: timestamp }}">{% endif -%}
+  {%- if ext_css %}<link rel="stylesheet" href="{{ ext_css | prepend: '/css/' | prepend: collection | prepend: '/' | url | append: timestamp }}">{% endif -%}
+  {%- if inline_css %}<style>{{ inline_css }}</style>{% endif -%}
   {%- capture seo -%}
     {%- seo title=false -%}
   {%- endcapture -%}
   {{- seo | replace: '<meta name="twitter:card" content="summary" />', '<meta name="twitter:card" content="summary_large_image" />' -}}
-  {%- unless page.image -%}{%- if site.twitter.image -%}{% assign twimage = site.twitter.image -%}{%- else -%}{% assign twimage = '/assets/images/social-sharing-default.jpg' -%}{%- endif -%}
+  {%- unless image -%}{%- if site.twitter.image -%}{% assign twimage = site.twitter.image -%}{%- else -%}{% assign twimage = '/assets/images/social-sharing-default.jpg' -%}{%- endif -%}
   <meta name="twitter:image" property="og:image" content="{{ twimage | url | prepend: site.url }}">
   {%- endunless -%}
   {% include head.html type="end" %}
-  <body id="top" class="page-{{page.title | slugify}} {% include body-class.html collection=page.collection doc-note-type=page.doc-note-type pageclass=page.class%}">
+  <body id="top" class="page-{{title | slugify}} {% include body-class.html collection=collection doc-note-type=doc-note-type pageclass=class%}">
     <a href="#main" class="button button--skip-link">Skip to content</a>
 
    <div class="minimal-header-container default-grid">
-      {% if page.standalone_resource_header %}
-        {% assign mhtitle = page.standalone_resource_header.title %}
+      {% if standalone_resource_header %}
+        {% assign mhtitle = standalone_resource_header.title %}
       {% else %}
-        {% assign mhtitle = page.standalone_resource_doc_name %}
+        {% assign mhtitle = standalone_resource_doc_name %}
       {% endif %}
       {% include minimal-header.html translations = translations
                                      title = mhtitle
-                                     subtitle = page.standalone_resource_header.subtitle
-                                     link = page.standalone_resource_header.link
-                                     title-ref=page.standalone_resource_header.title-ref %}
+                                     subtitle = standalone_resource_header.subtitle
+                                     link = standalone_resource_header.link
+                                     title-ref=standalone_resource_header.title-ref %}
     </div>
 
     <div class="default-grid nav-container">
         <div class="nav" >
-          {% if page.standalone_resource_pager %}
-          {% assign pager = page.standalone_resource_pager %}
-          <nav class="nav standalone-resource-pager" aria-label="{{page.type_of_guidance}}">
+          {% if standalone_resource_pager %}
+          {% assign pager = standalone_resource_pager %}
+          <nav class="nav standalone-resource-pager" aria-label="{{type_of_guidance}}">
             <ul>
                 <li class="nav__item">
-                {%- if page.standalone_resource_pager.icon -%}
-                    {%- capture icon-element -%}<img src="{{page.standalone_resource_pager.icon | url }}" alt="" class="category-icon">{%- endcapture -%}
+                {%- if standalone_resource_pager.icon -%}
+                    {%- capture icon-element -%}<img src="{{standalone_resource_pager.icon | url }}" alt="" class="category-icon">{%- endcapture -%}
                 {%- endif -%}
                 {% assign ref = pager.ref | split: "#" | first %}
-                {%- if page.permalink == ref %}
+                {%- if permalink == ref %}
                     <a class="pagename active" aria-current="page">{{icon-element}}{{pager.name}}</a>
                 {%else%}
                     <a href="{{pager.ref | url}}">{{icon-element}}{{pager.name}}</a>
                 {%endif%}
                 </li>
 
-                {% if page.standalone_resource_pager.include %}
-                    {% include {{ page.standalone_resource_pager.include }} %}
+                {% if standalone_resource_pager.include %}
+                    {% include {{ standalone_resource_pager.include }} %}
                     {% if context %}
                         <li class="nav__item"><a href="{{ context[1] | url }}">{% include icon.html class="pager-icon" name="arrow-up-thin" %} {{ context[0] }}: {{context[2]}}</a></li>
                     {% endif %}
@@ -84,11 +84,11 @@
                 {% endif %}
             </ul>
           </nav>
-        {% elsif page.standalone_resource_nav_links %}
-           <nav class="nav" aria-label="{{page.type_of_guidance}}">
+        {% elsif standalone_resource_nav_links %}
+           <nav class="nav" aria-label="{{type_of_guidance}}">
             <ul>
-            {% for link in page.standalone_resource_nav_links %}
-                <li class="nav__item"><a href="{{ link.ref | url }}"{% if page.permalink == link.ref %} class="active" aria-current="page"{% endif %}>{{ link.name }}</a></li>
+            {% for link in standalone_resource_nav_links %}
+                <li class="nav__item"><a href="{{ link.ref | url }}"{% if permalink == link.ref %} class="active" aria-current="page"{% endif %}>{{ link.name }}</a></li>
             {% endfor %}
             <li class="nav__item"><a href="https://www.w3.org/WAI/standards-guidelines/wcag/docs/">
                 All WCAG 2 Guidance
@@ -270,7 +270,7 @@ h2#sidebar-header {
 
 </style>
 
-    {% assign sidebar = page.sidebar %}
+    {% assign sidebar = sidebar %}
     {% if sidebar == nil %} {% assign sidebar = layout.sidebar %} {% endif %}
     {% if sidebar %}
         <nav class="box nav-hack sidebar standalone-resource__sidebar " aria-labelledby="sidebar-header">
@@ -289,18 +289,18 @@ h2#sidebar-header {
         {% assign expanded_content = content %}
     {% endif %}
 
-    <main id="main"{% if page.lang %} lang="{{page.lang}}"{% endif %} class="standalone-resource__main">
+    <main id="main"{% if lang %} lang="{{lang}}"{% endif %} class="standalone-resource__main">
         <header>
             <h1>
-              {% if page.type_of_guidance %}
+              {% if type_of_guidance %}
               <span class="standalone-resource__type-of-guidance">
-                {% if page.proposed %}
+                {% if proposed %}
                   Proposed
                 {% endif %}
-                {% if page.type_of_guidance_in_content %}{{ page.type_of_guidance }}:{% endif %}
+                {% if type_of_guidance_in_content %}{{ type_of_guidance }}:{% endif %}
               </span>
               {% endif %}
-              {% if page.title_html %}{{ page.title_html }}{% else %}{{ page.title }}{% endif %}
+              {% if title_html %}{{ title_html }}{% else %}{{ title }}{% endif %}
             </h1>
         </header>
 
@@ -312,10 +312,10 @@ h2#sidebar-header {
 
     <div class="default-grid with-gap leftcol">
       <div class="standalone-resource__prevnext">
-      {%- if page.navigation -%}
+      {%- if navigation -%}
         {%- include prevnext-navigation.html -%}
       {%- else -%}
-        {%- if page.order -%}
+        {%- if order -%}
           {%- include prevnext-order.html -%}
         {%- endif -%}
       {%- endif -%}
@@ -323,7 +323,7 @@ h2#sidebar-header {
       {% include feedback-box.html %}
       </div>
     </div>
-    {% include backtotop.html lang=page.lang %}
+    {% include backtotop.html lang=lang %}
   </div>
 
 

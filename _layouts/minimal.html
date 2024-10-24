@@ -1,65 +1,65 @@
 {%- assign pagelang = 'en' -%}
-{%- if page.lang -%}
-  {%- assign pagelang = page.lang -%}
+{%- if lang -%}
+  {%- assign pagelang = lang -%}
 {%- endif -%}
 {%- if pagelang == 'en' -%}
   {%- assign enpage = page -%}
 {%- else -%}
-  {%- assign enpage=site.documents | where:"ref", page.ref | where: "lang", "en" | first -%}
+  {%- assign enpage=site.documents | where:"ref", ref | where: "lang", "en" | first -%}
   {%- unless enpage.ref -%}
-    {%- assign enpage=site.pages | where:"ref", page.ref | where: "lang", "en" | first -%}
+    {%- assign enpage=site.pages | where:"ref", ref | where: "lang", "en" | first -%}
   {%- endunless -%}
 {%- endif -%}
 {%- assign englishpageurl = enpage.url %}
-{% assign translations=site.documents | where:"ref", page.ref | where_exp:"item", "item.lang != 'en'" | sort: 'lang' %}
+{% assign translations=site.documents | where:"ref", ref | where_exp:"item", "item.lang != 'en'" | sort: 'lang' %}
 {%- unless translations[0].ref -%}
-  {% assign translations=site.pages | where:"ref", page.ref | where_exp:"item", "item.lang != 'en'" | sort: 'lang' %}
+  {% assign translations=site.pages | where:"ref", ref | where_exp:"item", "item.lang != 'en'" | sort: 'lang' %}
 {%- endunless -%}
 <!DOCTYPE html>
-<html class="no-js" lang="{% if page.lang %}{{page.lang}}{% else %}en{% endif %}" dir="{% if site.data.lang[pagelang].rtl %}rtl{% else %}ltr{% endif %}" prefix="og: http://ogp.me/ns#">
+<html class="no-js" lang="{% if lang %}{{lang}}{% else %}en{% endif %}" dir="{% if site.data.lang[pagelang].rtl %}rtl{% else %}ltr{% endif %}" prefix="og: http://ogp.me/ns#">
   {%- assign timestamp = site.time | date: '%s%N' -%}
   {%- assign timestamp = '?' | append: timestamp -%}
   {%- include head.html type="start" timestamp=timestamp -%}
   {%- if site.data.lang[pagelang].rtl -%}
-  <title> W3C | {{ site.title | escape }} | {{ page.title | escape }} {%if page.doc-note-type == "archived" %}[{% include t.html t="Archived" %}]{% endif%}{%if page.doc-note-type == "draft" %}[{% include t.html t="Draft" %}]{% endif%}</title>
+  <title> W3C | {{ site.title | escape }} | {{ title | escape }} {%if doc-note-type == "archived" %}[{% include t.html t="Archived" %}]{% endif%}{%if doc-note-type == "draft" %}[{% include t.html t="Draft" %}]{% endif%}</title>
   {%- else -%}
-  <title>{%if page.doc-note-type == "archived" %}[{% include t.html t="Archived" %}]{% endif%}{%if page.doc-note-type == "draft" %}[{% include t.html t="Draft" %}]{% endif%} {{ page.title | escape }} | {{ site.title | escape }} | W3C</title>
+  <title>{%if doc-note-type == "archived" %}[{% include t.html t="Archived" %}]{% endif%}{%if doc-note-type == "draft" %}[{% include t.html t="Draft" %}]{% endif%} {{ title | escape }} | {{ site.title | escape }} | W3C</title>
   {%- endif -%}
-  {%- if page.external_css %}<link rel="stylesheet" href="{{ page.external_css | url | append: timestamp }}">{% endif -%}
-  {%- if page.ext_css %}<link rel="stylesheet" href="{{ page.ext_css | prepend: '/css/' | prepend: page.collection | prepend: '/' | url | append: timestamp }}">{% endif -%}
-  {%- if page.inline_css %}<style>{{ page.inline_css }}</style>{% endif -%}
+  {%- if external_css %}<link rel="stylesheet" href="{{ external_css | url | append: timestamp }}">{% endif -%}
+  {%- if ext_css %}<link rel="stylesheet" href="{{ ext_css | prepend: '/css/' | prepend: collection | prepend: '/' | url | append: timestamp }}">{% endif -%}
+  {%- if inline_css %}<style>{{ inline_css }}</style>{% endif -%}
   {%- capture seo -%}
     {%- seo title=false -%}
   {%- endcapture -%}
   {{- seo | replace: '<meta name="twitter:card" content="summary" />', '<meta name="twitter:card" content="summary_large_image" />' -}}
-  {%- unless page.image -%}{%- if site.twitter.image -%}{% assign twimage = site.twitter.image -%}{%- else -%}{% assign twimage = '/assets/images/social-sharing-default.jpg' -%}{%- endif -%}
+  {%- unless image -%}{%- if site.twitter.image -%}{% assign twimage = site.twitter.image -%}{%- else -%}{% assign twimage = '/assets/images/social-sharing-default.jpg' -%}{%- endif -%}
   <meta name="twitter:image" property="og:image" content="{{ twimage | url | prepend: site.url }}">
   {%- endunless -%}
   {% include head.html type="end" %}
-  <body id="top" class="page-{{page.title | slugify}} {% include body-class.html collection=page.collection doc-note-type=page.doc-note-type %}">
+  <body id="top" class="page-{{title | slugify}} {% include body-class.html collection=collection doc-note-type=doc-note-type %}">
     {% # include header-minimal.html translations=translations %}
     <div class="default-grid with-gap leftcol">
-  <main id="main"{% if page.lang %} lang="{{page.lang}}"{% endif %} style="grid-column-start: 2;">
-    <header{%- if page.resource.ref %}{%- unless page.ref == page.resource.ref %} class="in-resource"{%- endunless -%}{%- endif -%}>
-    <h1>{% if page.title_icon %}<svg class="icon-in-title" aria-hidden="true"><use xlink:href="{{page.title_icon | url}}"></use></svg> {% endif %}{% if page.title_html %}{{ page.title_html }}{% else %}{{ page.title }}{% endif %}</h1>
-      {%- if page.resource.ref -%}{%- unless page.ref == page.resource.ref -%}
-        <p>{% include t.html t="in" %} {% include link.html to=page.resource.ref %}</p>
+  <main id="main"{% if lang %} lang="{{lang}}"{% endif %} style="grid-column-start: 2;">
+    <header{%- if resource.ref %}{%- unless ref == resource.ref %} class="in-resource"{%- endunless -%}{%- endif -%}>
+    <h1>{% if title_icon %}<svg class="icon-in-title" aria-hidden="true"><use xlink:href="{{title_icon | url}}"></use></svg> {% endif %}{% if title_html %}{{ title_html }}{% else %}{{ title }}{% endif %}</h1>
+      {%- if resource.ref -%}{%- unless ref == resource.ref -%}
+        <p>{% include t.html t="in" %} {% include link.html to=resource.ref %}</p>
       {%- endunless -%}{%- endif -%}
     </header>
 
-    {%- # include doc-note-msg.html -%}
+    {%- include doc-note-msg.html -%}
     {%- include translation-note-msg.html -%}
 
     {{ content }}
 
-    {% if page.wcag_success_criteria or page.wcag_techniques %}
+    {% if wcag_success_criteria or wcag_techniques %}
       {% include resources.html %}
     {% endif %}
 
-    {%- if page.navigation -%}
+    {%- if navigation -%}
       {%- include prevnext-navigation.html -%}
     {%- else -%}
-      {%- if page.order -%}
+      {%- if order -%}
         {%- include prevnext-order.html -%}
       {%- endif -%}
     {%- endif -%}
@@ -67,7 +67,7 @@
     {% include feedback-box.html %}
 
 
-    {% include backtotop.html lang=page.lang %}
+    {% include backtotop.html lang=lang %}
   </main>
 </div>
 
