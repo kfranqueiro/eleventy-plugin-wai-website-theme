@@ -11,25 +11,57 @@ lang: en
 github:
   repository: w3c/wai-website-theme
   path: _components/index.md
-footer: > # Text in footer in HTML
-  <p> This is the text in the footer </p>
 ---
 
+This site demonstrates components from the [WAI Website Theme](https://github.com/w3c/wai-website-theme)
+used in an Eleventy project via `eleventy-plugin-wai-website-theme`.
 
-In this section, you can find the WAI design components and how to use them. There is also information on where they are used.
+This is **experimental** and not everything works completely 1:1 to the original Jekyll components.
 
-## Adding a new Design Component
+## Components
 
-Before adding: 
-
-* Ensure this component is a good candidate for reuse throughout the site. 
-* Feel free to test it in a specific project repository first. You can put it in the `_includes` folder and include it like any other component. Then, when it is ready, embed it in this central repository.
-
-Steps to add:
-
-* In the `_includes` folder, add `your-component.html` to describe the markup
-* In the `_components` folder, add:
-  *  `your-component.md` to document the component with one or more instances. Usually each variation has a Markdown example and an example of rendered output. It is encouraged to add a list of pages that use this component
-  *  `your-component.css` to add CSS (if it's in `_components`, it will get included; manually run `gulp css` to update the CSS file)
-
-Then commit the HTML, CSS (output of `gulp css`) and documentation, and [file a Pull Request](https://github.com/w3c/wai-website-theme/compare).
+- [Colors](colors/)
+- Atoms
+  - [Buttons](atoms/buttons/)
+  - [Button Group](atoms/button-group/)
+  - [Show/Hide Buttons](atoms/show-hide-buttons/)
+  - [Input Elements](atoms/input/)
+  - [Mark Element](atoms/mark/)
+  - [Paragraphs](atoms/p/)
+- [Block Quotes](blockquotes/)
+- [Boxes](boxes/)
+- [Decision Tree](decision-tree/)
+- Document Notes
+  - [Archived](document-notes/archived/)
+  - [Draft](document-notes/draft/)
+  - [Translation](document-notes/translation/)
+  - [Deprecated](document-notes/deprecated/)
+- [Draft Banner](draft-banner/)
+- [Editor Notes](editor-notes/)
+- [Evaluation Form](evaluation-form/)
+- Expand/Collapse
+  - [Single](excol/single/)
+  - [Multiple](excol/multiple/)
+- [Figure](figure/)
+- [Footnotes](footnotes/)
+- Form
+  - [Elements](form/elements/)
+  - [Search](form/search/)
+- [Grid](grid/)
+- [Headings](headings/)
+- [Icons](icons/)
+- [Images](images/)
+- [Lists](lists/)
+- [Minimal Header](minimal-header/)
+- [Minimal Navigation](minimal-navigation/)
+- [Progress Bar](progress-bar/)
+- [Resource Link](resource-link/)
+- [Results by Category](results-by-category/)
+- [Tables](tables/)
+- Teasers
+  - [Making the Web Accessible](teasers/mwa/)
+- [Video Card](video-card/)
+- [Video Links (deprecated)](video-links/)
+- [Video Player](video-player-data/)
+- [Video Player (deprecated version)](video-player/)
+- [Your Report](your-report/)

@@ -8,7 +8,6 @@ lang: en
 # contributors:
 # - name: Contributor 1
 # - name: Contributor 2
-layout: home
 ---
 
 <h1 class="visuallyhidden">W3C Web Accessibility Initiative Home</h1>

@@ -1,7 +1,0 @@
-.notes {
-  font-size: .85em;
-  & strong:first-child {
-    font-weight: bold;
-    color: var(--wai-green);
-  }
-}
