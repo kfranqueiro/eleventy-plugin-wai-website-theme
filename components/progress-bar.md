@@ -42,8 +42,9 @@ Embedding a progress bar:
 
 ### Standard (use with caption)
 
-{% include progress-bar.html percentage="30"
-%} 3 out of 10
+{% include progress-bar.html percentage="30" %}
+
+3 out of 10
 
 ### High contrast (can be used on its own)
 

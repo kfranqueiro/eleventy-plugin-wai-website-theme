@@ -22,7 +22,7 @@ This component is used by:
 
 ### Example 1: full grid
 
-{% include image.html src="default-grid.png" alt="WAI homepage with purple lines overlaid, they form 10 columns with the first and last using all remaining whitespace" %}
+![WAI homepage with purple lines overlaid, they form 10 columns with the first and last using all remaining whitespace](https://wai-website-theme.netlify.app/content-images/wai-website-theme/default-grid.png)
 
 {% # ::nomarkdown %}
 {% include box.html type="start" title="HTML" class="example simple" %}
@@ -38,6 +38,8 @@ This component is used by:
 
 
 ### Example 2: more compact grid for tools
+
+![ATAG Report Tool with purple lines overlaid, they form 10 columns, slightly smaller than the one above, with the first and last using all remaining whitespace](https://wai-website-theme.netlify.app/content-images/wai-website-theme/compact-grid.png)
 
 {% include image.html src="compact-grid.png" alt="ATAG Report Tool with purple lines overlaid, they form 10 columns, slightly smaller than the one above, with the first and last using all remaining whitespace" %}
 

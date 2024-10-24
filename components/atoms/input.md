@@ -60,7 +60,7 @@ Buttons can be used in many ways, the `button.html` include is a good way to get
 {% # include toc.html type="end" %}
 {% # :/ %}
 
-{% for v in page.variants %}
+{% for v in variants %}
 {% assign variant = v.context %}
 
 ## {{v.name}}

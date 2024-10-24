@@ -98,8 +98,7 @@ If added, a "Long description of image" link will be displayed underneath the im
 {% include image.html src="picture.jpg" alt="alternative text" class="normal left" %}
 {% include image.html src="picture.jpg" alt="alternative text" class="large left" %}
 
-### Float “right”
-{:style="clear:both"}
+### Float “right” {style="clear:both"}
 
 {% include image.html src="picture.jpg" alt="alternative text" class="tiny right" %}
 {% include image.html src="picture.jpg" alt="alternative text" class="mini right" %}
@@ -107,7 +106,7 @@ If added, a "Long description of image" link will be displayed underneath the im
 {% include image.html src="picture.jpg" alt="alternative text" class="normal right" %}
 {% include image.html src="picture.jpg" alt="alternative text" class="large right" %}
 
-{:style="clear:both"}
+{style="clear:both"}
 
 ### Long description
 

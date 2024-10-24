@@ -85,7 +85,7 @@ Boxes are used to group content.
 {% # include toc.html type="end" %}
 {% # :/ %}
 
-{% for v in page.variants %}
+{% for v in variants %}
 {% assign variant = v.context %}
 
 {% unless variant.content %}
@@ -107,7 +107,8 @@ Boxes are used to group content.
 * [{% include icon.html name="chevron-right" %} <span class="visual-a">adaptive strategies</span>](#)
 * [{% include icon.html name="chevron-right" %} <span class="visual-a">adaptive strategies</span>](#)
 * [{% include icon.html name="chevron-right" %} <span class="visual-a">adaptive strategies</span>](#)
-{:.linklist}
+
+{.linklist}
 {% endcapture %}
 {% endif %}
 {% else %}

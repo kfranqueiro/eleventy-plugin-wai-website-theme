@@ -145,7 +145,7 @@ Icons can be used in various ways with the `icon.html` helper. <a href="https://
 {% # :/ %}
 
 {% # ::nomarkdown %}
-{%- assign variants = page.variants | sort: "name" -%}
+{%- assign variants = variants | sort: "name" -%}
 {% # :/ %}
 
 ## All Icons

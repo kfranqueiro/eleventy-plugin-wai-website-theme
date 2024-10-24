@@ -73,7 +73,7 @@ We might develop other styles for quoting a document, e.g., WCAG excerpt.
 
 {% # include toc.html %}
 
-{% for v in page.variants %}
+{% for v in variants %}
 {% assign variant = v.context %}
 
 ## {{v.name}}

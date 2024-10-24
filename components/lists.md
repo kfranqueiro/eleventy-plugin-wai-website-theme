@@ -77,7 +77,8 @@ Use the class `alt` to have open circle list-icons.
     * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicabo quasi vero.
     * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicabo quasi vero.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
-{:.alt}
+
+{.alt}
 {% endcapture %}
 
 ```md
@@ -123,7 +124,7 @@ To remove the boldness from the `<dt>` elements, use the `notbold` class:
 
 [Web Accessibility Evaluation Tools List](…)
 : Includes information on almost 100 tools. You can use the filters to narrow down the list to the types of tools you are interested in.
-{:.notbold}
+{.notbold}
 ```
 
 #### Example
@@ -136,7 +137,7 @@ things to consider for your situation.
 [Web Accessibility Evaluation Tools List](…)
 : Includes information on almost 100 tools. You can use the filters to
 narrow down the list to the types of tools you are interested in.
-{:.notbold}
+{.notbold}
 
 ## List variations
 
@@ -171,14 +172,16 @@ narrow down the list to the types of tools you are interested in.
 ```md
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
-{:.two.columns}
+
+{.two .columns}
 ```
 
 #### Example
 
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
-{:.two.columns}
+
+{.two .columns}
 
 ### Four Columns
 
@@ -189,7 +192,7 @@ narrow down the list to the types of tools you are interested in.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
-{:.four.columns}
+{.four .columns}
 ```
 
 #### Example
@@ -198,7 +201,7 @@ narrow down the list to the types of tools you are interested in.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
-{:.four.columns}
+{.four .columns}
 
 ### Checkbox List
 
@@ -207,7 +210,7 @@ narrow down the list to the types of tools you are interested in.
 ```md
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
-{:.checkbox}
+{.checkbox}
 ```
 
 #### Example
@@ -215,7 +218,7 @@ narrow down the list to the types of tools you are interested in.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
 
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
-{:.checkbox}
+{.checkbox}
 
 ### List that does not look like a list {#nolist}
 
@@ -223,7 +226,7 @@ narrow down the list to the types of tools you are interested in.
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
 
 * Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explicab.
-{:.nolist}
+{.nolist}
 {% endcapture %}
 
 #### Code
@@ -238,7 +241,7 @@ narrow down the list to the types of tools you are interested in.
 
 ### No list with Images/Icons {#nolistimg}
 
-You can specify the width of the image with an extra class (instead of `{:.nolist.withicons}` write `{:.nolist.withicons.sizeclass}`). Possible values for sizes are:
+You can specify the width of the image with an extra class (instead of `{.nolist.withicons}` write `{.nolist.withicons.sizeclass}`). Possible values for sizes are:
 * `tiny`:  60px
 * `mini`:  90px
 * `small`: 120px
@@ -247,19 +250,21 @@ You can specify the width of the image with an extra class (instead of `{:.nolis
 On mobile, images float left and are half the size, with a minimum width of 60px.
 
 {% capture example %}
-* {:.left} {% include image.html src="picture.jpg" alt="Demo alt text" %} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica.
+* {% include image.html src="picture.jpg" alt="Demo alt text" %} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. {.left}
 
-* {:.right} {% include image.html src="picture.jpg" alt="Demo alt text" %} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica.
-{:.nolist.withicons}
+* {% include image.html src="picture.jpg" alt="Demo alt text" %} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. {.right}
+
+{.nolist .withicons}
 {% endcapture %}
 
 #### Code
 
 ```md
-* {:.left} {%raw%}{% include image.html src="picture.jpg" alt="Demo alt text" %}{%endraw%} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica.
+* {%raw%}{% include image.html src="picture.jpg" alt="Demo alt text" %}{%endraw%} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. {.left}
 
-* {:.right} {%raw%}{% include image.html src="picture.jpg" alt="Demo alt text" %}{%endraw%} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica.
-{:.nolist.withicons}
+* {%raw%}{% include image.html src="picture.jpg" alt="Demo alt text" %}{%endraw%} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta minus harum sit eos ipsam aliquid eveniet explica. {.right}
+
+{.nolist .withicons}
 ```
 
 #### Example
@@ -274,12 +279,9 @@ Specify class `.sentence` if you want to display a list as a sentence:
 * One
 * Two
 * Three
-{:.sentence}
+
+{.sentence}
 {% endcapture %}
-
-### Example
-
-{{ example }}
 
 ### Code
 
@@ -287,3 +289,6 @@ Specify class `.sentence` if you want to display a list as a sentence:
 {{ example }}
 ```
 
+### Example
+
+{{ example }}
