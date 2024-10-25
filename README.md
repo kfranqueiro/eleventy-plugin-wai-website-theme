@@ -6,8 +6,9 @@ styles and components usable within an Eleventy project.
 
 ## Requirements
 
-- Eleventy 3.x (for ES Module syntax and eventually virtual template support)
-- `htmlTemplateEngine: "liquid"` (this is the default)
+- Eleventy 3.x (for ES Module syntax, async configuration function,
+  and eventually virtual template support)
+- `htmlTemplateEngine: "liquid"` (this is the default setting)
 - This plugin forcibly sets Liquid options to `{ jekyllInclude: true }`
   (for wai-website-theme components' `include` directives to work)
 
@@ -42,14 +43,15 @@ to avoid dependencies listed under `wai-website-theme` that you don't need:
 
 These dependencies are not needed because wai-website-theme also includes pre-built styles
 within the repository.
-(These should ideally be `devDependencies` in wai-website-theme, not `dependencies`; I've sent a PR.)
+(These should ideally be `devDependencies` in wai-website-theme, not `dependencies`;
+I've sent a PR to update this.)
 
 ### Step 3: Add this plugin
 
 Install this repo:
 
 ```sh
-npm i git://gist.github.com/8d347eb0afdc4d0c5a8f67e3312713b6.git
+npm i git://github.com/kfranqueiro/eleventy-plugin-wai-website-theme.git
 ```
 
 Add the plugin to your Eleventy config:
@@ -57,13 +59,15 @@ Add the plugin to your Eleventy config:
 ```js
 import pluginWai from "eleventy-plugin-wai-website-theme-plugin";
 
-// ...
-
-await eleventyConfig.addPlugin(pluginWai);
+export default async function (eleventyConfig) {
+  // ...
+  await eleventyConfig.addPlugin(pluginWai);
+  // ...
+}
 ```
 
-**Note:** Don't forget `await` in front of `eleventyConfig.addPlugin`!
-(This means your configuration function should be `async`.)
+**Note:** Don't forget `await` in front of `eleventyConfig.addPlugin`
+(and `async` in front of the configuration function).
 
 ### Step 4: Reference wai-website-theme Styles
 
@@ -85,9 +89,10 @@ because some components (e.g. icon and minimal-header) assume that location.
 - Layouts in the wai-website-theme repo are beyond this project's scope
 - A few [`markdown-it` plugins](https://mdit-plugins.github.io/) are included
   to accomplish behavior documented in component examples, but there will be some differences, e.g.:
-  - There is never a `:` after the opening brace, e.g. `{.class}` (not `{:.class}`)
+  - There is never a `:` after the opening brace for classes or attributes,
+    e.g. `{.class}` (not `{:.class}`)
   - Adding classes inline is done at the end of the line rather than the beginning
-  - Adding classes after block elements (e.g. lists) requires an extra blank line between the list and class
+  - Adding classes after block elements (e.g. lists) requires an extra blank line between the two
   - Adding multiple classes requires a space in between, e.g. `{.one .two}` (not `{.one.two}`)
 - The plugin currently writes temporarily to the includes folder,
   because Eleventy does not handle virtual templates under the includes folder
@@ -95,7 +100,7 @@ because some components (e.g. icon and minimal-header) assume that location.
   It will avoid clobbering pre-existing files with the same name.
 - Known issues:
   - If a build fails, files populated into the includes folder by this plugin will not be cleaned up,
-    because Eleventy has no error handling event (#3500)
+    because Eleventy has no error handling event (#3500). `git clean` can help resolve this situation.
   - Components that could manage to render markdown in Jekyll (e.g. `box`'s title) may not support it here
   - `doc-note-msg` does not render `doc-note-message-md` correctly;
     [Eleventy claims to support liquid and markdown together in renderTemplate](https://www.11ty.dev/docs/plugins/render/#rendertemplate-paired-shortcode)

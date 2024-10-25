@@ -50,10 +50,11 @@ async function performReplacements(filename) {
       "if include.type != 'start' and include.type != 'end'"
     );
 
-  if (filename !== "image.html")
+  if (filename !== "image.html") {
     // Ensure whitespace around if/endif are truncated,
     // to avoid unwittingly creating markdown paragraphs
     content = content.replace(/\{% if/g, "{%- if").replace(/\{%-? endif -?%\}/g, "{%- endif -%}");
+  }
 
   return content;
 }
@@ -117,7 +118,7 @@ export default async function (eleventyConfig) {
   }
 
   // Unfortunately, while Eleventy supports virtual _layout_ templates,
-  // it does not support other includes virtually.
+  // it does not support other includes virtually. https://github.com/11ty/eleventy/issues/3501
   // (Presumably it doesn't patch Liquid's lookup logic.)
   // Attempts to set Liquid's templates option have failed as well.
   // This is an ugly workaround, which temporarily copies the templates to
@@ -129,7 +130,7 @@ export default async function (eleventyConfig) {
     }
   });
 
-  // NOTE: This does NOT run after errors and I'm not sure there's any event that does...
+  // NOTE: This does NOT run after errors. https://github.com/11ty/eleventy/issues/3500
   eleventyConfig.on("eleventy.after", async ({ dir }) => {
     for (const filename of waiIncludesFilenames) {
       await unlink(join(dir.includes, filename));

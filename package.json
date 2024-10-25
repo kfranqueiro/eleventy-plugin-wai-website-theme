@@ -6,7 +6,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://gist.github.com/8d347eb0afdc4d0c5a8f67e3312713b6.git"
+    "url": "git+https://github.com/kfranqueiro/eleventy-plugin-wai-website-theme.git"
   },
   "author": "Kenneth G. Franqueiro",
   "license": "BSD-3-Clause",
