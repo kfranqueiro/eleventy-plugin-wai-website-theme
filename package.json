@@ -10,6 +10,9 @@
   },
   "author": "Kenneth G. Franqueiro",
   "license": "BSD-3-Clause",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@mdit/plugin-attrs": "^0.13.1",
     "@mdit/plugin-dl": "^0.13.1",

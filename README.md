@@ -6,6 +6,7 @@ styles and components usable within an Eleventy project.
 
 ## Requirements
 
+- Node.js v20 (for `import.meta.dirname` in ES Modules)
 - Eleventy 3.x (for ES Module syntax, async configuration function,
   and eventually virtual template support)
 - `htmlTemplateEngine: "liquid"` (this is the default setting)
