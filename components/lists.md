@@ -11,7 +11,6 @@ footer: > # Text in footer in HTML
   <p> This is the text in the footer </p>
 github:
   repository: w3c/wai-website-theme
-  path: _components/lists.md
 inline_css: |
 ---
 

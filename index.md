@@ -9,7 +9,6 @@ lang: en
 # - name: Contributor 2
 github:
   repository: w3c/wai-website-theme
-  path: _components/index.md
 ---
 
 This site demonstrates components from the [WAI Website Theme](https://github.com/w3c/wai-website-theme)
