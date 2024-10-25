@@ -31,11 +31,6 @@ async function performReplacements(filename) {
     .replace(/include_cached/g, "include")
     // Translate Jekyll's relative_url filter to Eleventy's url
     .replace(/\|\s*relative_url/g, "| url")
-    // Translate Jekyll's markdownify filter to Eleventy shortcode
-    .replace(
-      "{{page.doc-note-message-md | markdownify }}",
-      `{% renderTemplate "liquid,md" %}{{ page.doc-note-message-md }}{% endrenderTemplate %}`
-    )
     // Jekyll namespaces data under page.* and site.data.*; Eleventy doesn't
     .replace(/\bpage\./g, "")
     .replace(/\bsite\.data\./g, "")
@@ -75,7 +70,9 @@ export default async function (eleventyConfig) {
     jekyllInclude: true, // Necessary for compatibility with wai-website-theme templates
   });
 
+  let md; // Store for use in shortcode, since Eleventy doesn't seem to expose its instance
   eleventyConfig.amendLibrary("md", (mdLib) => {
+    md = mdLib;
     mdLib.use(attrs);
     mdLib.use(dl);
     mdLib.use(markdownItFootnote);
@@ -85,7 +82,8 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addPlugin(EleventyRenderPlugin);
 
-  // Add equivalent to Jekyll filter
+  // Add equivalents to Jekyll filters
+
   eleventyConfig.addLiquidFilter("absolute_url", function (value) {
     if (!this.baseUrl)
       throw new Error(
@@ -93,6 +91,8 @@ export default async function (eleventyConfig) {
       );
     return this.baseUrl.replace(/\/$/, "") + eleventyConfig.pathPrefix + value;
   });
+
+  eleventyConfig.addLiquidFilter("markdownify", (value) => md.render(value));
 
   // Exclude site-specific includes (which are not documented components)
   const excludes = [

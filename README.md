@@ -103,6 +103,3 @@ because some components (e.g. icon and minimal-header) assume that location.
   - If a build fails, files populated into the includes folder by this plugin will not be cleaned up,
     because Eleventy has no error handling event (#3500). `git clean` can help resolve this situation.
   - Components that could manage to render markdown in Jekyll (e.g. `box`'s title) may not support it here
-  - `doc-note-msg` does not render `doc-note-message-md` correctly;
-    [Eleventy claims to support liquid and markdown together in renderTemplate](https://www.11ty.dev/docs/plugins/render/#rendertemplate-paired-shortcode)
-    but it seems to render blank. `doc-note-message` (the HTML variation) works fine.
